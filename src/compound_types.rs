@@ -16,22 +16,19 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/project/blob/main/LICENSE
  */
 
-use crate::compound_types::compound_types;
-use crate::control_flow::control_flow;
-use crate::functions::functions;
-use crate::mutable_shadowing_const::mutable_shadowing_const;
-use crate::scalar_types::scalar_types;
-
-mod mutable_shadowing_const;
-mod scalar_types;
-mod compound_types;
-mod functions;
-mod control_flow;
-
-fn main() {
-	mutable_shadowing_const();
-	scalar_types();
-	compound_types();
-	functions();
-	control_flow();
+pub(crate) fn compound_types() {
+	println!("\nBEGIN TUPLE\n");
+	let tup = ("Let's Get Rusty!", 100_000);
+	let (channel, sub_count) = tup;
+	println!("tup consists of channel: {} and sub_count: {}", channel, sub_count);
+	let vehicle = ("Porsche", 220);
+	let model = vehicle.0;
+	let velocity = vehicle.1;
+	println!("vehicle consists of model: {} and velocity: {}", model, velocity);
+	let error_codes = [200, 404, 500];
+	let not_found = error_codes[1];
+	println!("The values of error_codes are: {}, {} and {}", error_codes[0], error_codes[1], error_codes[2]);
+	println!("The value of not_found is: {}", not_found);
+	let byte = [0; 8];
+	println!("The values of byte are: {}, {}, {}, {}, {}, {}, {} and {}", byte[0], byte[1], byte[2], byte[3], byte[4], byte[5], byte[6], byte[7]);
 }

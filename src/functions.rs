@@ -16,22 +16,22 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/project/blob/main/LICENSE
  */
 
-use crate::compound_types::compound_types;
-use crate::control_flow::control_flow;
-use crate::functions::functions;
-use crate::mutable_shadowing_const::mutable_shadowing_const;
-use crate::scalar_types::scalar_types;
+pub(crate) fn functions() {
+	simple_function(11, -22);
+	let z = return_function(11, -22);
+	println!("\nBEGIN MAIN FUNCTION\n");
+	println!("The value of z is: {}", z);
+}
 
-mod mutable_shadowing_const;
-mod scalar_types;
-mod compound_types;
-mod functions;
-mod control_flow;
+fn simple_function(x: u32, y: i32) {
+	println!("\nBEGIN SIMPLE FUNCTION\n");
+	println!("The value of x is: {}", x);
+	println!("The value of y is: {}", y);
+}
 
-fn main() {
-	mutable_shadowing_const();
-	scalar_types();
-	compound_types();
-	functions();
-	control_flow();
+fn return_function(x: i32, y: i32) -> i32 {
+	println!("\nBEGIN RETURN FUNCTION\n");
+	println!("The value of x is: {}", x);
+	println!("The value of y is: {}", y);
+	x + y
 }

@@ -16,22 +16,16 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/project/blob/main/LICENSE
  */
 
-use crate::compound_types::compound_types;
-use crate::control_flow::control_flow;
-use crate::functions::functions;
-use crate::mutable_shadowing_const::mutable_shadowing_const;
-use crate::scalar_types::scalar_types;
-
-mod mutable_shadowing_const;
-mod scalar_types;
-mod compound_types;
-mod functions;
-mod control_flow;
-
-fn main() {
-	mutable_shadowing_const();
-	scalar_types();
-	compound_types();
-	functions();
-	control_flow();
+pub(crate) fn mutable_shadowing_const() {
+	println!("\nBEGIN MUTABLE SHADOWING CONST\n");
+	let mut x = 5;
+	println!("The value of x is: {}", x);
+	x = 6;
+	println!("The value of x is: {}", x);
+	let y = 0;
+	println!("The value of y is: {}", y);
+	let y = 1;
+	println!("The value of y is: {}", y);
+	const SUBSCRIBER_COUNT: u32 = 100_000;
+	println!("The value of SUBSCRIBER_COUNT is: {}", SUBSCRIBER_COUNT);
 }
