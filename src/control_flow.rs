@@ -18,7 +18,7 @@
 
 use std::time::Instant;
 
-use colored::Colorize;
+use colored::{ColoredString, Colorize};
 
 pub(crate) fn control_flow() {
 	println!("\nBEGIN CONTROL FLOW\n");
@@ -27,18 +27,30 @@ pub(crate) fn control_flow() {
 	println!("{} {}", "Your number is:".green(), number);
 	let mut now = Instant::now();
 	less_than_or_equal_to_seven(number);
-	now = time(now, "less_than_or_equal_to_seven(number)");
+	let tup_0 = time(now, "less_than_or_equal_to_seven(number)");
+	now = tup_0.0;
 	equal_to_ten(number);
-	now = time(now, "equal_to_ten(number)");
+	let tup_1 = time(now, "equal_to_ten(number)");
+	now = tup_1.0;
 	loop_count_towards(number);
-	now = time(now, "loop_count_towards(number)");
+	let tup_2 = time(now, "loop_count_towards(number)");
+	now = tup_2.0;
 	for_range_count_towards(number);
-	now = time(now, "for_range_count_towards(number)");
+	let tup_3 = time(now, "for_range_count_towards(number)");
+	now = tup_3.0;
 	while_count_down(number);
-	now = time(now, "while_count_down(number)");
+	let tup_4 = time(now, "while_count_down(number)");
+	now = tup_4.0;
 	println!("\nBEGIN CONTROL FLOW - COLLECTIONS\n");
 	for_collection();
-	time(now, "for_collection()");
+	let tup_5 = time(now, "for_collection()");
+	println!("\nBEGIN CONTROL FLOW - TIMINGS\n");
+	println!("{} {}", tup_0.1, tup_0.2);
+	println!("{} {}", tup_1.1, tup_1.2);
+	println!("{} {}", tup_2.1, tup_2.2);
+	println!("{} {}", tup_3.1, tup_3.2);
+	println!("{} {}", tup_4.1, tup_4.2);
+	println!("{} {}", tup_5.1, tup_5.2);
 }
 
 fn for_collection() {
@@ -80,6 +92,7 @@ fn loop_count_towards(number: i32) {
 	}
 }
 
+#[allow(clippy::needless_bool)]
 fn equal_to_ten(number: i32) {
 	let result = if number == 10 { true } else { false };
 	if result {
@@ -89,6 +102,7 @@ fn equal_to_ten(number: i32) {
 	}
 }
 
+#[allow(clippy::comparison_chain)]
 fn less_than_or_equal_to_seven(number: i32) {
 	if number < 7 {
 		println!("{}", "The number is smaller than 7!".green());
@@ -124,7 +138,8 @@ fn validate_input_str_to_int() -> i32 {
 	number
 }
 
-fn time(instant: Instant, function: &str) -> Instant {
-	println!("{}{} {}", function.bright_magenta(), "> : ".bright_magenta(), instant.elapsed().as_micros());
-	Instant::now()
+fn time(instant: Instant, function: &str) -> (Instant, ColoredString, u128) {
+	let mut output = function.to_string();
+	output.push_str("> : ");
+	(Instant::now(), output.trim().bright_magenta(), instant.elapsed().as_micros())
 }
