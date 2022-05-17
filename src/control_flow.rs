@@ -25,25 +25,28 @@ pub(crate) fn control_flow() {
     println!("Please input a number!");
     let number = validate_input_str_to_int();
     println!("{} {}", "Your number is:".green(), number);
-    let mut now = Instant::now();
+    let instant_before_execution = Instant::now();
     less_than_or_equal_to_seven(number);
-    let less_than_or_equal_to_seven = time(now, "less_than_or_equal_to_seven(number)");
-    now = Instant::now();
+    let less_than_or_equal_to_seven = time(
+        instant_before_execution,
+        "less_than_or_equal_to_seven(number)",
+    );
+    let instant_before_execution = Instant::now();
     equal_to_ten(number);
-    let equal_to_ten = time(now, "equal_to_ten(number)");
-    now = Instant::now();
+    let equal_to_ten = time(instant_before_execution, "equal_to_ten(number)");
+    let instant_before_execution = Instant::now();
     loop_count_towards(number);
-    let loop_count_towards = time(now, "loop_count_towards(number)");
-    now = Instant::now();
+    let loop_count_towards = time(instant_before_execution, "loop_count_towards(number)");
+    let instant_before_execution = Instant::now();
     for_range_count_towards(number);
-    let for_range_count_towards = time(now, "for_range_count_towards(number)");
-    now = Instant::now();
+    let for_range_count_towards = time(instant_before_execution, "for_range_count_towards(number)");
+    let instant_before_execution = Instant::now();
     while_count_down(number);
-    let while_count_down = time(now, "while_count_down(number)");
-    now = Instant::now();
+    let while_count_down = time(instant_before_execution, "while_count_down(number)");
     println!("\nBEGIN CONTROL FLOW - COLLECTIONS\n");
+    let instant_before_execution = Instant::now();
     for_collection();
-    let for_collection = time(now, "for_collection()");
+    let for_collection = time(instant_before_execution, "for_collection()");
     println!("\nBEGIN CONTROL FLOW - TIMINGS\n");
     println!(
         "{} {}",
