@@ -15,15 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see https://github.com/TamrielNetwork/project/blob/main/LICENSE
  */
-
 use std::io;
 
-use colored::*;
+use colored::Colorize;
 
 pub(crate) fn control_flow() {
 	println!("\nBEGIN CONTROL FLOW\n");
-	println!("Please input your number!");
-	let number: u32;
+	println!("Please input a number!");
+	let number: i32;
 	loop {
 		let mut guess = String::new();
 		match io::stdin().read_line(&mut guess) {
@@ -33,7 +32,7 @@ pub(crate) fn control_flow() {
 				continue;
 			}
 		};
-		let guess: u32 = match guess.trim().parse() {
+		let guess = match guess.trim().parse() {
 			Ok(num) => num,
 			Err(_) => {
 				println!("{}", "WARNING: Please type a number!".bright_red());
@@ -43,39 +42,46 @@ pub(crate) fn control_flow() {
 		number = guess;
 		break;
 	}
-	println!("Your number is: {}", number);
-	if number < 10 {
-		println!("The number is smaller than 10!");
-	} else if number == 10 {
-		println!("The number is equal to 10!");
+	println!("{} {}", "Your number is:".green(), number);
+	if number < 7 {
+		println!("{}", "The number is smaller than 7!".green());
+	} else if number == 7 {
+		println!("{}", "The number is equal to 7!".green());
 	} else {
-		println!("None of the conditions were met!");
+		println!("{}", "None of the conditions were met!".yellow());
 	}
 	let result = if number == 10 { true } else { false };
-	println!("The condition that the number is 10 is: {}", result);
-	println!("Now we will count until the number has been reached!");
+	if result {
+		println!("{}", "The number is 10!".green());
+	} else {
+		println!("{}", "The number is not 10!".yellow());
+	}
+	println!("{}", "Now we will count until the number has been reached!".cyan());
 	let mut counter = 0;
+	println!("{} {}", "1st>".cyan(), counter);
 	loop {
-		counter += 1;
-		println!("{}", counter);
-		if counter >= number {
-			println!("The number has been reached!");
+		if counter >= number.abs() {
+			println!("{}", "The number has been reached!".green());
 			break;
 		}
+		counter += 1;
+		println!("{} {}", "1st>".cyan(), counter);
 	}
-	println!("Now we will count the number down to 1!");
+	println!("{}", "Now we will count until the number has been reached again!".cyan());
+	for num in 0..number + 1 {
+		println!("{} {}", "2nd>".cyan(), num);
+	}
+	println!("{}", "The number has been reached again!".green());
+	println!("{}", "Now we will count the number down to 0!".cyan());
 	let mut temp_number = number;
-	while temp_number != 0 {
-		println!("{}!", temp_number);
+	while temp_number >= 0 {
+		println!("{} {}", "3rd>".cyan(), temp_number);
 		temp_number -= 1;
 	}
-	println!("LIFTOFF!");
-	let collection = [584858, 1222, 1244, 457678, 234, 5, 1244, 795765];
+	println!("{}", "LIFTOFF!".green());
+	println!("\nBEGIN CONTROL FLOW - COLLECTIONS\n");
+	let collection = [counter, number, temp_number];
 	for element in collection.iter() {
 		println!("The value is: {}", element);
-	}
-	println!("Now we will count until the number has been reached again!");
-	for num in 0..number + 1 {
-		println!("{}", num);
 	}
 }
