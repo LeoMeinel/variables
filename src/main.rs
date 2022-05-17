@@ -22,16 +22,16 @@ use crate::functions::functions;
 use crate::mutable_shadowing_const::mutable_shadowing_const;
 use crate::scalar_types::scalar_types;
 
+mod compound_types;
+mod control_flow;
+mod functions;
 mod mutable_shadowing_const;
 mod scalar_types;
-mod compound_types;
-mod functions;
-mod control_flow;
 
 fn main() {
-	mutable_shadowing_const();
-	scalar_types();
-	compound_types();
-	functions();
-	control_flow();
+    mutable_shadowing_const();
+    scalar_types();
+    compound_types();
+    functions();
+    control_flow();
 }

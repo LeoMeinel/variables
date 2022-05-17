@@ -17,21 +17,21 @@
  */
 
 pub(crate) fn functions() {
-	simple_function(11, -22);
-	let z = return_function(11, -22);
-	println!("\nBEGIN MAIN FUNCTION\n");
-	println!("The value of z is: {}", z);
+    simple_function(11, -22);
+    let z = return_function(11, -22);
+    println!("\nBEGIN MAIN FUNCTION\n");
+    println!("The value of z is: {}", z);
 }
 
 fn simple_function(x: u32, y: i32) {
-	println!("\nBEGIN SIMPLE FUNCTION\n");
-	println!("The value of x is: {}", x);
-	println!("The value of y is: {}", y);
+    println!("\nBEGIN SIMPLE FUNCTION\n");
+    println!("The value of x is: {}", x);
+    println!("The value of y is: {}", y);
 }
 
 fn return_function(x: i32, y: i32) -> i32 {
-	println!("\nBEGIN RETURN FUNCTION\n");
-	println!("The value of x is: {}", x);
-	println!("The value of y is: {}", y);
-	x + y
+    println!("\nBEGIN RETURN FUNCTION\n");
+    println!("The value of x is: {}", x);
+    println!("The value of y is: {}", y);
+    x + y
 }
