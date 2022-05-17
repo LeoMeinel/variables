@@ -15,26 +15,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see https://github.com/TamrielNetwork/project/blob/main/LICENSE
  */
-use std::io;
+
+use std::time::Instant;
 
 use colored::Colorize;
 
 pub(crate) fn control_flow() {
+	let mut now = Instant::now();
 	println!("\nBEGIN CONTROL FLOW\n");
 	println!("Please input a number!");
 	let number = validate_input_str_to_int();
 	println!("{} {}", "Your number is:".green(), number);
 	less_than_or_equal_to_seven(number);
+	now = time(now, "less_than_or_equal_to_seven(number)");
 	equal_to_ten(number);
-	let counter = loop_count_towards(number);
+	now = time(now, "equal_to_ten(number)");
+	loop_count_towards(number);
+	now = time(now, "loop_count_towards(number)");
 	for_range_count_towards(number);
-	let temp_number = while_count_down(number);
+	now = time(now, "for_range_count_towards(number)");
+	while_count_down(number);
+	now = time(now, "while_count_down(number)");
 	println!("\nBEGIN CONTROL FLOW - COLLECTIONS\n");
-	for_collection(number, counter, temp_number);
+	for_collection();
+	time(now, "for_collection()");
 }
 
-fn for_collection(number: i32, counter: i32, temp_number: i32) {
-	let collection = [counter, number, temp_number];
+fn for_collection() {
+	let collection = [-0.213, 846.324231, 89.90098734, -999.7363];
 	for element in collection.iter() {
 		println!("The value is: {}", element);
 	}
@@ -94,6 +102,7 @@ fn less_than_or_equal_to_seven(number: i32) {
 }
 
 fn validate_input_str_to_int() -> i32 {
+	use std::io;
 	let number: i32;
 	loop {
 		let mut guess = String::new();
@@ -115,4 +124,9 @@ fn validate_input_str_to_int() -> i32 {
 		break;
 	}
 	number
+}
+
+fn time(instant: Instant, function: &str) -> Instant {
+	println!("{}{} {}", function.bright_magenta(), "> : ".bright_magenta(), instant.elapsed().as_nanos());
+	Instant::now()
 }
