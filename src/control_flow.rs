@@ -125,6 +125,6 @@ fn validate_input_str_to_int() -> i32 {
 }
 
 fn time(instant: Instant, function: &str) -> Instant {
-	println!("{}{} {}", function.bright_magenta(), "> : ".bright_magenta(), instant.elapsed().as_nanos());
+	println!("{}{} {}", function.bright_magenta(), "> : ".bright_magenta(), instant.elapsed().as_micros());
 	Instant::now()
 }
