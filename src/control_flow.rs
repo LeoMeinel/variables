@@ -21,11 +21,11 @@ use std::time::Instant;
 use colored::Colorize;
 
 pub(crate) fn control_flow() {
-	let mut now = Instant::now();
 	println!("\nBEGIN CONTROL FLOW\n");
 	println!("Please input a number!");
 	let number = validate_input_str_to_int();
 	println!("{} {}", "Your number is:".green(), number);
+	let mut now = Instant::now();
 	less_than_or_equal_to_seven(number);
 	now = time(now, "less_than_or_equal_to_seven(number)");
 	equal_to_ten(number);
