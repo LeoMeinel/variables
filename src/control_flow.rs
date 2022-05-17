@@ -48,7 +48,7 @@ fn for_collection() {
 	}
 }
 
-fn while_count_down(number: i32) -> i32 {
+fn while_count_down(number: i32) {
 	println!("{}", "Now we will count the number down to 0!".cyan());
 	let mut temp_number = number;
 	while temp_number >= 0 {
@@ -56,7 +56,6 @@ fn while_count_down(number: i32) -> i32 {
 		temp_number -= 1;
 	}
 	println!("{}", "LIFTOFF!".green());
-	temp_number
 }
 
 fn for_range_count_towards(number: i32) {
@@ -67,7 +66,7 @@ fn for_range_count_towards(number: i32) {
 	println!("{}", "The number has been reached again!".green());
 }
 
-fn loop_count_towards(number: i32) -> i32 {
+fn loop_count_towards(number: i32) {
 	println!("{}", "Now we will count until the number has been reached!".cyan());
 	let mut counter = 0;
 	println!("{} {}", "1st>".cyan(), counter);
@@ -79,7 +78,6 @@ fn loop_count_towards(number: i32) -> i32 {
 		counter += 1;
 		println!("{} {}", "1st>".cyan(), counter);
 	}
-	counter
 }
 
 fn equal_to_ten(number: i32) {
